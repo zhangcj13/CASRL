@@ -9,21 +9,24 @@ To view our paper, please refer: [CASRL: Collision Avoidance with Spiking Reinfo
   <tr>
     <td width="33%" align="center">
       <!-- <strong>Feature One</strong><br> -->
-      <img src="images/random.gif" alt="Feature One Demo" width="100%">
+      <img src="images/random2.gif" alt="Feature One Demo" width="100%">
       <br>
       <em>4-random</em>
     </td>
     <td width="33%" align="center">
       <!-- <strong>Feature Two</strong><br> -->
-      <img src="images/swap.gif" alt="Feature Two Demo" width="100%">
+      <img src="images/swap2.gif" alt="Feature Two Demo" width="100%">
       <br>
       <em>2-pair</em>
     </td>
     <td width="33%" align="center">
       <!-- <strong>Feature Three</strong><br> -->
-      <img src="images/circle.gif" alt="Feature Three Demo" width="100%">
+      <img src="images/circle2.gif" alt="Feature Three Demo" width="100%">
       <br>
       <em>4-circle</em>
     </td>
   </tr>
 </table>
+
+## Method
+![image](images/network.png)
