@@ -5,17 +5,25 @@ To view our paper, please refer: [CASRL: Collision Avoidance with Spiking Reinfo
 
 # Project Demo
 
-<!-- Click：[VIDEO](https://github.com/zhangcj13/CASRL/blob/main/images/robotic_test.mp4) -->
-
-
-## 🎥 视频演示
-
-<video controls width="100%">
-  <source src="images/robotic_test.mp4" type="video/mp4">
-  您的浏览器不支持视频标签，请直接下载：
-  [下载视频](images/robotic_test.mp4)
-</video>
-
-*视频描述：机器人功能测试演示*
-
-[![点击播放机器人测试视频](https://via.placeholder.com/800x450/007acc/ffffff?text=点击播放视频)](images/robotic_test.mp4)
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <!-- <strong>Feature One</strong><br> -->
+      <img src="images/random.gif" alt="Feature One Demo" width="100%">
+      <br>
+      <em>4-random</em>
+    </td>
+    <td width="33%" align="center">
+      <!-- <strong>Feature Two</strong><br> -->
+      <img src="images/swap.gif" alt="Feature Two Demo" width="100%">
+      <br>
+      <em>2-pair</em>
+    </td>
+    <td width="33%" align="center">
+      <!-- <strong>Feature Three</strong><br> -->
+      <img src="images/circle.gif" alt="Feature Three Demo" width="100%">
+      <br>
+      <em>4-circle</em>
+    </td>
+  </tr>
+</table>
