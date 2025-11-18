@@ -1,7 +1,7 @@
 # CASRL
-The source code for paper: CASRL: Collision Avoidance with Spiking Reinforcement Learning  Among Dynamic, Decision-Making Agents
+The source code for paper: [CASRL: Collision Avoidance with Spiking Reinforcement Learning Among Dynamic, Decision-Making Agents](https://doi.org/10.1109/IROS58592.2024.10802416).
 
-To view our paper, please refer: [CASRL: Collision Avoidance with Spiking Reinforcement Learning Among Dynamic, Decision-Making Agents](https://doi.org/10.1109/IROS58592.2024.10802416). 
+<!-- To view our paper, please refer: [CASRL: Collision Avoidance with Spiking Reinforcement Learning Among Dynamic, Decision-Making Agents](https://doi.org/10.1109/IROS58592.2024.10802416).  -->
 
 # Project Demo
 
@@ -32,16 +32,21 @@ To view our paper, please refer: [CASRL: Collision Avoidance with Spiking Reinfo
 ![image](images/network.png)
 
 ## Prepare Python env 
-<!-- python=3.8.13
+python=3.7.16. if use conda, you can build python as:
+```
+conda create --name casrl python==3.7.16
+conda activate casrl
+```
 ```
 # install torch
-pip install torch==2.0.0+cu117 torchvision==0.15.0+cu117 torchaudio==2.0.0+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
-# install yolox
-bash libs/download_install.sh
+pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
 # install packages
 pip install -r requirement.txt
-``` -->
-
+# install baselines
+pip install -e {your_dir}/baselines-master
+# Tensorboard may conflict with the version in Torch, you can update it
+pip install tensorboard==1.15.0
+```
 
 ## Train 
 ```
@@ -69,4 +74,4 @@ If our work help to your research, please cite our paper, thx.
 ## Thanks to these amazing projects:
 - [rl_collision_avoidance](https://github.com/mit-acl/rl_collision_avoidance)
 - [gym-collision-avoidance](https://github.com/mit-acl/gym-collision-avoidance)
-
+- [Transformers-RL](https://github.com/dhruvramani/Transformers-RL)
