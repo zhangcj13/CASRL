@@ -49,14 +49,33 @@ pip install tensorboard==1.15.0
 ```
 
 ## Train 
+4-agent stage1 
 ```
-
+python train_dppo_stage1.py
 ```
+10-agent stage2, load the weight from stage1
+```
+python train_dppo_stage2.py
+```
+For different ARCH and params, edit the TrainPhase_PPOS_STAGEc in file './gym_collision_avoidance/envs/config.py'
 
+Use
+```
+tensorboard --logdir=./runs , http://localhost:6006
+```
+to view the training process
 ## Eval 
 ```
-
+python run_500eval.py
 ```
+Choose 'NUM_AGENTS_TO_TEST' and 'POLICIES_TO_TEST' of FullEvalTest in file './gym_collision_avoidance/envs/config.py' for different testcase. You can also make your own policy in in './gym_collision_avoidance/envs/policies' for eval.
+
+Use 
+```
+python plot_comparison.py
+```
+to plot eval result as:
+![result](images/comparison.png)
 
 ## Citation
 If our work help to your research, please cite our paper, thx.
