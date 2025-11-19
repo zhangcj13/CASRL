@@ -93,4 +93,5 @@ If our work help to your research, please cite our paper, thx.
 ## Thanks to these amazing projects:
 - [rl_collision_avoidance](https://github.com/mit-acl/rl_collision_avoidance)
 - [gym-collision-avoidance](https://github.com/mit-acl/gym-collision-avoidance)
+- [baselines](https://github.com/openai/baselines)
 - [Transformers-RL](https://github.com/dhruvramani/Transformers-RL)
