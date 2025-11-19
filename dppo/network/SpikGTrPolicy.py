@@ -1,0 +1,60 @@
+import math
+import numpy as np
+import torch
+import torch.nn as nn
+from torch.nn import init
+from torch.nn import functional as F
+
+from dppo.network.BaseNet import BaseNet
+from layers.spikGTr import SpikGTr
+
+class SpikGTrActor(BaseNet):
+    def __init__(self, obs_size=4,oas_size=7, action_space=2,device=None,continuous_action_space=True,timestep=3):
+        super(SpikGTrActor, self).__init__(obs_size,oas_size, action_space,device,timestep)
+
+        self.act_fea_transformer = SpikGTr(input_dim=oas_size, head_num=8, layer_num=1,embedding_dim=512,gru_gating=True,device=self.device)
+
+        self.act_fc1 = nn.Linear(512, 512)
+
+        self.act_fea_obs = nn.Linear(obs_size, 32)
+
+        self.act_fc2 = nn.Linear(512 + 32, 256)
+        self.act = nn.Linear(256, action_space)
+
+        self.continuous_action_space=continuous_action_space
+
+    def forward(self, x):
+
+        host_vec, other_seq, num_other_agents = x
+
+        N, B, _ = other_seq.shape
+        self.act_fea_transformer.set_v(B, N, other_seq.device)
+
+        key_padding_mask = []
+        for i in range(B):
+            for j in range(N):
+                key_padding_mask.append(0 if j < num_other_agents[i] else 1)
+        key_padding_mask = torch.from_numpy(np.array(key_padding_mask, dtype=np.float32)).view(B, N).to(
+            device=self.device)
+
+        fc1_v = fc1_s = torch.zeros(B, 512, device=self.device)
+        obe_v = obe_s = torch.zeros(B, 32, device=self.device)
+        fc2_v = fc2_s = torch.zeros(B, 256, device=self.device)
+        act_v = act_s = torch.zeros(B, self.action_space, device=self.device)
+
+        for step in range(self.timesteps):
+            trans_state = self.act_fea_transformer(other_seq, attn_mask=key_padding_mask)['logit']
+            a_tran = torch.mean(trans_state, 0)
+
+            fc1_v, fc1_s = self.mem_update(self.act_fc1, a_tran, fc1_v, fc1_s)
+            obe_v, obe_s = self.mem_update(self.act_fea_obs, host_vec, obe_v, obe_s)
+            cat_s = torch.cat((obe_s, fc1_s), dim=-1)
+
+            fc2_v, fc2_s = self.mem_update(self.act_fc2, cat_s, fc2_v, fc2_s)
+            act_v, act_s = self.ns_mem_update(self.act, fc2_s, act_v, act_s)
+        # value = act_v
+        if self.continuous_action_space:
+            output = F.tanh(act_v)
+        else:
+            output = F.softmax(act_v, dim=1)
+        return output

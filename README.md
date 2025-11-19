@@ -57,7 +57,7 @@ python train_dppo_stage1.py
 ```
 python train_dppo_stage2.py
 ```
-For different ARCH and params, edit the TrainPhase_PPOS_STAGEc in file './gym_collision_avoidance/envs/config.py'
+For different ARCH and params, edit the TrainPhase_PPOS_STAGE in file './gym_collision_avoidance/envs/config.py'
 
 Use
 ```

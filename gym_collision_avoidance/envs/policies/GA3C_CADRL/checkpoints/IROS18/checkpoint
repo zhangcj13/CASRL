@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/cjzhang/workspace/robot/rl_collision_avoidance-release/TorchGA3C/checkpoints/RL_tmp/network_01990000"
+all_model_checkpoint_paths: "/home/cjzhang/workspace/robot/rl_collision_avoidance-release/TorchGA3C/checkpoints/RL_tmp/network_01990000"
